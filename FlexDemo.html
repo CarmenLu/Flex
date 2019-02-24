@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flex布局Demo</title>
+    <style>
+        section{
+            display:block;
+            background:black;
+            color: white;
+        }
+        .box{
+            display:flex;
+            color:black;
+        }
+        .box-item{
+            background:	#FFB6C1;
+            width:100px;
+            height:50px;
+            font-family: Consolas;
+            margin-bottom:5px;
+            margin-left:5px;
+        }
+        .box-item1 {
+            background:#FFB6C1;
+            width: 50px;
+            height: 50px;
+            font-family: Consolas;
+            margin-bottom: 5px;
+            margin-left: 5px;
+        }
+        .box-item2{
+            background:#FFB6C1;
+            width:70px;
+            height:30px;
+            font-family: Consolas;
+            margin-bottom:5px;
+            margin-left:5px;
+        }
+        .box-1{
+            width:400px;
+            flex-flow:row-reverse wrap;
+        }
+        .box-2{
+            width:350px;
+            justify-content: space-between;
+            flex-flow:row wrap;
+        }
+        .box-3{
+            width:400px;
+            flex-flow:row wrap;
+            align-items: center;
+            justify-content: space-around;
+        }
+        .box-4{
+            width:250px;
+            flex-flow:row wrap;
+            align-content:space-between;
+        }
+        .box-5{
+            flex-flow:row wrap;
+            align-content:space-between;
+        }
+        .box-6{
+            width:150px;
+            flex-flow:row nowrap;
+            align-content:space-between;
+        }
+
+
+        </style>
+</head>
+<body>
+<h1>Flex布局Demo</h1>
+        <h2>容器属性</h2>
+        <section>
+            <h3>项目排列</h3>
+            <p>flex-direction:决定项目的排列方向。
+                flex-direction:row | row-reverse | column | column-reverse;
+            </p>
+            <p>flex-wrap:决定当项目在一条轴线排不下，如何换行。
+                flex-wrap:nowrap | wrap | wrap-reverse;
+            </p>
+            <p>flex-flow是以上的简写
+                flex-flow:< flex-direction> ||< flex-wrap>
+            </p>
+            <div class="box box-1">
+                <div class="box-item">1</div>
+                <div class="box-item">2</div>
+                <div class="box-item">3</div>
+                <div class="box-item">4</div>
+            </div>
+        </section>
+        <section>
+        <h3>对齐方式</h3>
+        <p>justify-content:定义了项目在主轴的对齐方式
+         justify-content:flex-start|flex-end|center|space-between|space-around;
+        </p>
+            <div class="box box-2">
+                <div class="box-item">1</div>
+                <div class="box-item1">2</div>
+                <div class="box-item">3</div>
+                <div class="box-item">4</div>
+            </div>
+        <p>
+            align-items:定义项目在交叉轴上如何对齐。
+            align-items:flex-start | flex-end | center | baseline | stretch;
+        </p>
+            <div class="box box-3">
+                <div class="box-item2">1</div>
+                <div class="box-item1">2</div>
+                <div class="box-item2">3</div>
+                <div class="box-item1">4</div>
+            </div>
+        <p>
+            align-content:定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。
+            align-content: flex-start | flex-end | center | space-between | space-around | stretch;
+        </p>
+            <div class="box box-4">
+                <div class="box-item1">1</div>
+                <div class="box-item2">2</div>
+                <div class="box-item">3</div>
+                <div class="box-item1">4</div>
+                <div class="box-item2">5</div>
+                <div class="box-item1">6</div>
+                <div class="box-item2">7</div>
+                <div class="box-item1">8</div>
+                <div class="box-item1">9</div>
+            </div>
+    </section>
+<section>
+    <h3>项目属性</h3>
+    <p>
+        order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。
+        .item { order: < integer>; }
+    </p>
+    <div class="box box-4">
+        <div class="box-item" style="order:1;">1</div>
+        <div class="box-item" style="order:2;">2</div>
+        <div class="box-item" style="order:0;">3(order=0)</div>
+    </div>
+    <p>
+        flex-grow属性定义项目的放大比例，默认为0;
+        .item { flex-grow: < number>; /* default 0 */ }
+    <div class="box box-5">
+        <div class="box-item" style="flex-grow:1;">1</div>
+        <div class="box-item" style="flex-grow:3;">2</div>
+        <div class="box-item" style="flex-grow:1;">3</div>
+    </div>
+    </p>
+    <p>
+        flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。
+        .item { flex-shrink: < number>; /* default 1 */ }
+    </p>
+    <div class="box box-6">
+        <div class="box-item" style="flex-shrink:0;">1</div>
+        <div class="box-item" style="flex-shrink:1;">2</div>
+        <div class="box-item" style="flex-shrink:1;">3</div>
+    </div>
+    <p>
+        flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。
+        .item { flex-basis: < length>; | auto; /* default auto */
+    </p>
+    <div class="box box-6">
+        <div class="box-item" style="flex-basis:auto;">1</div>
+        <div class="box-item" style="flex-basis:auto;">2</div>
+        <div class="box-item" style="flex-basis:auto;">3</div>
+    </div>
+    <p>flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。
+    </p>
+    <p>align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认继承父类的属性即auto.</p>
+    <div class="box box-3">
+        <div class="box-item2">1</div>
+        <div class="box-item1">2</div>
+        <div class="box-item2" style="align-self:flex-end;">3（flex-end）</div>
+        <div class="box-item1">4</div>
+    </div>
+</section>
+</body>
+</html>
